@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "24613986258",
+    "firebase_url": "https://bagtrackerfirebase.firebaseio.com",
+    "project_id": "bagtrackerfirebase",
+    "storage_bucket": "bagtrackerfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24613986258:android:c335133467fd5fad",
+        "android_client_info": {
+          "package_name": "com.example.shashank.bagtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24613986258-i6u9s8771anhb5homf4srhralfl6s36e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8ZTN6B1VqBvYbH4PqM3qp6Fd8of2I34"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
