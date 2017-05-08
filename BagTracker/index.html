@@ -1,13 +1,19 @@
 <html>
     <head>
-    
+    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+       
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <style>
          #map {
-        height: 100%;
-        float: left;
-        width: 70%;
-        height: 100%;
+        height: 550px  
+      }
+      .heading{
+          background-color: #FF9853
       }
     </style>
     </head>
@@ -60,6 +66,7 @@
                 latitudeVal= snapshot.val().lat;
                 longitudeVal = snapshot.val().lng;
                 altitudeVal = snapshot.val().alt;
+                console.log("Lat:"+latitudeVal+" Long:"+longitudeVal+" Altitude:"+altitudeVal);
                 //alert("Latitude = "+latitudeVal+" Longitude = "+longitudeVal+" Altitude ="+altitudeVal);
                 var directionsService = new google.maps.DirectionsService;
                 var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -78,11 +85,38 @@
                      },
                      map:map
                    });
-            })
+                });
+            $.ajax({
+                    type: "GET",
+                    url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitudeVal+","+longitudeVal+"&key=AIzaSyCoTQ-eMdbzo9GGSep7htY8bEjFgQEpNAI",
+                    //data: {jsonData: JSON.stringify(myData)},
+                    dataType: "json",
+
+                    //if received a response from the server
+                    success: function (data) {
+                        //our country code was correct so we have some information to display
+       
+                           console.log(data);
+                           $("#locationDetails").addClass("alert alert-success");
+                           $("#locationDetails").text(data.results[0].formatted_address);
+                           $("#locationDetails").append('<p>Altitude:'+altitudeVal+' meters</p>');
+
+
+
+                    }
+                });
         }
           
            
       </script>
-      <div id="map"></div>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-xs-12 jumbotron alert alert-success">Bag Tracking System</h1>    
+            </div>
+            <div class="row">
+                <div class="col-xs-8" id="map"></div>
+                <div class="col-xs-4" id="locationDetails"></div>   
+            </div>
+        </div>
         </body>
-</html>
+</html> 
